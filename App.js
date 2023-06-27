@@ -12,6 +12,7 @@ import { AuthProvider } from './src/contextos/autenticacaoContext';
 
 const Stack = createStackNavigator();
 
+//Criar e povoar tabelas iniciais
 const App = () => {
   useEffect(() => {
     UsuarioService.iniciarBDUsuario()

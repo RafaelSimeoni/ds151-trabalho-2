@@ -12,6 +12,7 @@ const TelaAdm = ({navigation}) => {
     }
   }, [usuarioLogado, navigation]);
 
+  //Fazer logout
   const deslogar = () => {
     setUsuarioLogado(null);
     navigation.navigate('TelaLogin');
