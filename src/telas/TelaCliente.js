@@ -10,13 +10,18 @@ const TelaCliente = ({ navigation }) => {
   const [novoNome, setNovoNome] = useState('');
 
   //Verificar se o usuário está logado
-  const { usuarioLogado } = useContext(AutenticacaoContext);
+  const { usuarioLogado, setUsuarioLogado } = useContext(AutenticacaoContext);
   useEffect(() => {
     if (!usuarioLogado || usuarioLogado.nivelAcesso !== 'CLIENTE') {
       navigation.navigate('TelaLogin');
     }
   }, [usuarioLogado, navigation]);
 
+  //Deslogar
+  const deslogar = () => {
+    setUsuarioLogado(null);
+    navigation.navigate('TelaLogin');
+  };
 
   //Buscar lista de cachorros
   useEffect(() => {
@@ -91,6 +96,9 @@ const TelaCliente = ({ navigation }) => {
           </View>
         )}
       </View>
+      <View style={styles.btn}>
+        <Button title="Logout" onPress={deslogar} />
+      </View>
     </ScrollView>
   );
 };
@@ -152,6 +160,10 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
+  },
+  btn: {
+    marginVertical: 10,
+    width: '100%',
   },
 });
 
